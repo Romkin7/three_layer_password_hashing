@@ -26,6 +26,12 @@ router.post("/signin", async(req, res, next) => {
     try {
         //Find a user from database 
         let user = await db.User.findOne({"username": req.body.username});
+        if(!user) {
+            let error = new Error();
+            error.status = 400;
+            error.message = "user not found!";
+            return next(error);
+        }
         //Compare password from login form to one stored in database
         let isMatch = await user.comparePassword(req.body.password);
         //Send back user with all information
@@ -34,10 +40,9 @@ router.post("/signin", async(req, res, next) => {
                 message: "Logged in user: "+user.username
             });
         } else {
-            let error = new Error({
-                status: 400,
-                message: "user not found!"
-            });
+            let error = new Error();
+            error.status = 400;
+            error.message = "user not found!";
             return next(error);
         }
     } 
