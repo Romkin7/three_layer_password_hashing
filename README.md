@@ -44,5 +44,7 @@ userSchema.methods.comparePassword = async function(candidatePassword, next) {
  };
 ```
 All responses will be printed in json in browser.
+so in order to make new post requests from forms you need to go back in browser using back arrow.
+in future I will add ajax to html file to be able to display responses in nice flash messages.
 
 Cheers, roman t
