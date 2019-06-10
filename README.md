@@ -23,7 +23,7 @@ in this example password is taken from an input and turn into md5 hash using nod
 
 in order to compare passwords i made this function in userSchema:
 
-userSchema.methods.comparePassword = async function(candidatePassword, next) { 
+`userSchema.methods.comparePassword = async function(candidatePassword, next) { 
   try { 
     /** First we need to deciper password stored in database so we can reveal 
     * bcrypt hash we decrypt it with key stored on process.env.SECRET_KEY */ 
@@ -41,7 +41,7 @@ userSchema.methods.comparePassword = async function(candidatePassword, next) {
       return next(err); 
     } 
  };
-
+`
 All responses will be printed in json in browser.
 
 Cheers, roman t
